@@ -9,11 +9,9 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.get("/repositories", (req, res) => {
-  console.log('teste');
-});
+app.get("/repositories", RepoController.ListRepositories);
 
-app.post("/repositories", RepoController.store);
+app.post("/repositories",  RepoController.CreateRepotorie);
 
 app.put("/repositories/:id", (req, res) => {
   console.log('teste');
@@ -23,8 +21,6 @@ app.delete("/repositories/:id", (req, res) => {
   console.log('teste');
 });
 
-app.post("/repositories/:id/like", (req, res) => {
-  console.log('teste');
-});
+app.post("/repositories/:id/like", LikeController.LikeRepository);
 
 module.exports = app;
