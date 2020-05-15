@@ -1,13 +1,11 @@
-const Repo = require('../models/Repo');
 const RepoController = require('./RepoController');
 
-module.exports = {
-   LikeRepository(req,res){
-       const { id } = req.params;
-       const repository = RepoController.ListRepositories.find(repository => repository.id ===id);
+function LikeRepository(req, res){
+    const repositories = RepoController.repositories;
+    const { id } = req.params;
+    repository = repositories.find(repo => repo.id === id);
+    repository.like++;
+    return res.json({repository});
+};
 
-       repository.like++;
-
-       return res.json(repository);
-   }
-}
+module.exports = {LikeRepository}

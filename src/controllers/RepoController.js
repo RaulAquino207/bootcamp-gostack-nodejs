@@ -2,17 +2,16 @@ const Repo = require('../models/Repo');
 
 const repositories = [];
 
-module.exports = {
-    CreateRepotorie(req,res){
-        const {title, url, techs} = req.body;
-        const repository = Repo.CreateRepository(title, url, techs);
-        repositories.push(repository);
-        return res.json({repository});
-        console.log(repositories);
+function CreateRepotorie(req,res){
+    const {title, url, techs} = req.body;
+    const repository = Repo.CreateRepository(title, url, techs);
+    repositories.push(repository);
+    return res.json({repository});
 
-    },
-
-    ListRepositories(req,res){
-        return res.json(repositories);
-    }
 }
+
+function ListRepositories(req,res){
+    return res.json(repositories);
+}
+
+module.exports = {CreateRepotorie,ListRepositories,repositories};
