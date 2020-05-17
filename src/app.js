@@ -11,7 +11,7 @@ app.use(cors());
 
 app.get("/repositories", RepoController.ListRepositories);
 
-app.post("/repositories",  RepoController.CreateRepotorie);
+app.post("/repositories",  RepoController.CreateRepository);
 
 app.put("/repositories/:id", (req, res) => {
   console.log('teste');

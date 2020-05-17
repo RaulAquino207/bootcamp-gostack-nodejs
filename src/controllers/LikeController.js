@@ -3,8 +3,9 @@ const RepoController = require('./RepoController');
 function LikeRepository(req, res){
     const repositories = RepoController.repositories;
     const { id } = req.params;
-    repository = repositories.find(repo => repo.id === id);
-    repository.like++;
+
+    const targetRepo = repositories.find(repo => repo.id === id);
+    targetRepo.like++;
     return res.json({repository});
 };
 

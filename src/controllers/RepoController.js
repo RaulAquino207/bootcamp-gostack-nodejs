@@ -2,7 +2,7 @@ const Repo = require('../models/Repo');
 
 const repositories = [];
 
-function CreateRepotorie(req,res){
+function CreateRepository(req,res){
     const {title, url, techs} = req.body;
     const repository = Repo.CreateRepository(title, url, techs);
     repositories.push(repository);
@@ -14,4 +14,10 @@ function ListRepositories(req,res){
     return res.json(repositories);
 }
 
-module.exports = {CreateRepotorie,ListRepositories,repositories};
+function DeleteRepository(req,res){
+    const { id } = req.params;
+    const repository = repositories.find(id);
+    repositories.delete(repository);
+}
+
+module.exports = {repositories,CreateRepository,ListRepositories,DeleteRepository};
